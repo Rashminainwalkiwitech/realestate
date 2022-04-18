@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'pages',
     'listings',
     'realtors',
+    'django.contrib.humanize',
+    'Authentication',
+    'contacts',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +82,14 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'btredb',
+        'USER' : 'postgres',
+        'PASSWORD':'rashi@99',
+        'HOST': 'localhost'
+
+
+
     }
 }
 
@@ -128,3 +137,16 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Media Folder Settings
+
+# media settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+#Messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+   
+}
